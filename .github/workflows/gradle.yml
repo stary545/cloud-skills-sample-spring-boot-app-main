@@ -40,7 +40,7 @@ jobs:
         
     # 4) gradle 빌드
     - name: Build with Gradle
-      run: ./gradlew clean build
+      run: ./gradlew clean war
       
     # AWS 인증
     - name: Configure AWS credentials
