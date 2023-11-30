@@ -53,11 +53,7 @@ jobs:
     # AWS S3에 업로드
     - name: Upload to AWS S3
       run: |
-        aws deploy push \
-          --application-name ${{ env.CODE_DEPLOY_APPLICATION_NAME }} \
-          --ignore-hidden-files \
-          --s3-location s3://$S3_BUCKET_NAME/$GITHUB_SHA.zip \
-          --source .
+        aws s3 cp build/libs/escho-test.war s3://$S3_BUCKET_NAME/$GITHUB_SHA.war
           
     # AWS EC2에 Deploy
     - name: Deploy to AWS EC2 from S3
