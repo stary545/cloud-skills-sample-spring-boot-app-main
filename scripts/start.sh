@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-PROJECT_ROOT="/home/ubuntu/cloud-skills-sample-spring-boot-app-main"
+PROJECT_ROOT="/home/ec2-user/cloud-skills-sample-spring-boot-app-main"
 JAR_FILE="$PROJECT_ROOT/escho-test.jar"
 
 APP_LOG="$PROJECT_ROOT/application.log"
