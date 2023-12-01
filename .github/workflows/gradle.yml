@@ -40,7 +40,7 @@ jobs:
         
     # 4) gradle 빌드
     - name: Build with Gradle
-      run: ./gradlew clean war
+      run: ./gradlew clean build
       
     # AWS 인증
     - name: Configure AWS credentials
@@ -53,7 +53,11 @@ jobs:
     # AWS S3에 업로드
     - name: Upload to AWS S3
       run: |
-        aws s3 cp build/libs/escho-test.war s3://$S3_BUCKET_NAME/$GITHUB_SHA.war
+        aws deploy push \
+          --application-name ${{ env.CODE_DEPLOY_APPLICATION_NAME }} \
+          --ignore-hidden-files \
+          --s3-location s3://$S3_BUCKET_NAME/$GITHUB_SHA.zip \
+          --source .
           
     # AWS EC2에 Deploy
     - name: Deploy to AWS EC2 from S3
